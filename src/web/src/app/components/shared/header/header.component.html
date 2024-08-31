@@ -1,0 +1,13 @@
+<div
+  class="sticky flex top-0 justify-start transition-colors items-center px-16 py-4 space-x-4 text-white bg-black bg-opacity-85 border-b shadow-lg z-50 backdrop-blur w-full"
+>
+  <a href="/"
+    ><img class="w-6 h-6 md:w-10 md:h-10 object-contain" src="favicon.ico"
+  /></a>
+  <a class="text-xl" [ngClass]="{ 'font-bold': page === 'home' }" href="/"
+    >Home</a
+  >
+  <a class="text-xl" [ngClass]="{ 'font-bold': page === 'add' }" href="/add"
+    >Add</a
+  >
+</div>
