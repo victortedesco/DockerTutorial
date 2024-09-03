@@ -1,15 +1,15 @@
 services:
   sqlserver:
     environment:
-      MSSQL_SA_PASSWORD: ${MSSQL_SA_PASSWORD:-Password123@!}
+      MSSQL_SA_PASSWORD: "${MSSQL_SA_PASSWORD:-<Password123>}"
       ACCEPT_EULA: "Y"
     restart: always
-    #healthcheck:
-      #test: ["CMD-SHELL", "/opt/mssql-tools18/bin/sqlcmd -C -No -U sa -P $${MSSQL_SA_PASSWORD:-Password123@!} -Q SELECT 1 || exit 1"]
-      #interval: 10s
-      #retries: 10
-      #start_period: 30s
-      #timeout: 3s
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/mssql-tools18/bin/sqlcmd -C -No -U sa -P $${MSSQL_SA_PASSWORD:-<Password123>} -Q \"SELECT 1\" || exit 1"]
+      interval: 10s
+      retries: 10
+      start_period: 15s
+      timeout: 10s
     ports:
       - "${MSSQL_PORT:-2433}:1433"
 
@@ -17,13 +17,13 @@ services:
     environment:
       ASPNETCORE_ENVIRONMENT: Production
       ASPNETCORE_HTTP_PORTS: 8080
-      MSSQL_SA_PASSWORD: ${MSSQL_SA_PASSWORD:-Password123@!}
+      MSSQL_SA_PASSWORD: "${MSSQL_SA_PASSWORD:-<Password123>}"
     healthcheck:
       test: [ "CMD-SHELL", "curl --fail http://localhost:8080/health || exit 1" ]
       interval: 10s
       retries: 10
       start_period: 15s
-      timeout: 3s
+      timeout: 10s
     ports:
       - "${USERS_API_PORT:-5020}:8080"
 
@@ -33,7 +33,7 @@ services:
       interval: 10s
       retries: 10
       start_period: 15s
-      timeout: 3s
+      timeout: 10s
     ports:
       - "80:4000"
       - "4200:4000"

@@ -11,9 +11,9 @@ services:
     build:
       context: .
       dockerfile: src/api/Users.API/Dockerfile
-    #depends_on:
-      #sqlserver:
-        #condition: service_healthy
+    depends_on:
+      sqlserver:
+        condition: service_healthy
 
   web:
     image: dockertutorial/web:${TAG:-dev}
