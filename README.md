@@ -1,6 +1,6 @@
 # Documentation
 
-You can check documents, videos, commands, an simple explanation  of Docker and more going to the
+You can check documents, commands, an simple explanation  of Docker and more going to the
 [wiki](https://github.com/victortedesco/DockerTutorial/wiki).<br>
 (Some of them was personally chosen by me, others were created by me)
 
